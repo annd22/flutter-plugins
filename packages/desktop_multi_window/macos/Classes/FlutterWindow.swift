@@ -56,7 +56,7 @@ class BaseFlutterWindow: NSObject {
   }
 
   override func close() {
-    self.orderOut(nil)  // Hide the window instead of closing
+    window.orderOut(nil)  // Hide the window instead of closing
   }
 }
 
@@ -103,7 +103,7 @@ class FlutterWindow: BaseFlutterWindow {
   }
 
   override func close() {
-    self.orderOut(nil)  // Hide the window instead of closing
+    window.orderOut(nil)  // Hide the window instead of closing
   }
 }
 
