@@ -101,6 +101,10 @@ class FlutterWindow: BaseFlutterWindow {
     window.contentViewController = nil
     window.windowController = nil
   }
+
+  override func close() {
+    self.orderOut(nil)  // Hide the window instead of closing
+  }
 }
 
 extension FlutterWindow: NSWindowDelegate {
