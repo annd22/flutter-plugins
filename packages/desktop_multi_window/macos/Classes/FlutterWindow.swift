@@ -48,7 +48,7 @@ class BaseFlutterWindow: NSObject {
   }
 
   func close() {
-    window.close()
+    window.orderOut(nil)
   }
 
   func setFrameAutosaveName(name: String) {
