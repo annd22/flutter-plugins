@@ -47,16 +47,12 @@ class BaseFlutterWindow: NSObject {
     }
   }
 
-  func close() {
-    window.close()
-  }
-
   func setFrameAutosaveName(name: String) {
     window.setFrameAutosaveName(name)
   }
 
   override func close() {
-    window.orderOut(nil)  // Hide the window instead of closing
+    self.orderOut(nil)  // Hide the window instead of closing
   }
 }
 
@@ -100,10 +96,6 @@ class FlutterWindow: BaseFlutterWindow {
     }
     window.contentViewController = nil
     window.windowController = nil
-  }
-
-  override func close() {
-    window.orderOut(nil)  // Hide the window instead of closing
   }
 }
 
