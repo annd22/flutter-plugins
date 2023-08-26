@@ -47,12 +47,19 @@ class BaseFlutterWindow: NSObject {
     }
   }
 
+  func close() {
+    window.close()
+  }
+
   func setFrameAutosaveName(name: String) {
     window.setFrameAutosaveName(name)
   }
+}
 
-  override func close() {
-    self.orderOut(nil)  // Hide the window instead of closing
+class CustomController: NSViewController, NSWindowDelegate {
+  func windowShouldClose(_ sender: NSWindow) -> Bool {
+    sender.orderOut(nil)
+    return false
   }
 }
 
@@ -82,7 +89,9 @@ class FlutterWindow: BaseFlutterWindow {
 
     super.init(window: window, channel: windowChannel)
 
-    window.delegate = self
+    let viewController = CustomController()
+
+    window.delegate = viewController
     window.isReleasedWhenClosed = false
     window.titleVisibility = .hidden
     window.titlebarAppearsTransparent = true
